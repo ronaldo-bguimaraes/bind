@@ -27,8 +27,9 @@ HTML:
 O padrão utilizado no HTML é:
 `bind="nomeDoAtributo:nomeDoState"`
 
-`attr` é um atribubo criado pelo initBind que é anexado a cada elemento com o atributo `bind`. Ele
-contém o nome do atributo que vem antes do `:`
+`attr` é um atribubo criado pela `initBind` function.
+Ele é anexado a cada elemento que tenha o atributo `bind`, e contém o nome que vem antes do `:`.
+(nome do atributo a ser modificado)
 
 Exemplo:
 
