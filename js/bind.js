@@ -37,33 +37,33 @@ function createState(defaultValue) {
   }
 }
 
-// conecta o elemento ao estado
-function bindNode(node, attr, state) {
-
-  // remove a marcação de bind do elemento
-  node.removeAttribute("bind");
-
-  // adiciona o attr do bind no elemento
-  node.attr = attr;
-
-  // adiciona o state ao elemento
-  node.state = state;
-
-  // função para atualizar o stado
-  node.updateState = (value) => state.value = value;
-
-  // função para atualizar o elemento
-  node.updateNode = (value) => node[attr] = value;
-
-  // adicina o elemento ao estado
-  state.bind(node);
-}
-
 // faz a ligação de todos os elementos do parentNode com o estado
 function initBind(parentNode, data) {
 
   // selectiona todos os elementos com o atributo bind
   const list = parentNode.querySelectorAll("[bind]");
+
+  // conecta o elemento ao estado
+  function bindNode(node, attr, state) {
+
+    // remove a marcação de bind do elemento
+    node.removeAttribute("bind");
+
+    // adiciona o attr do bind no elemento
+    node.attr = attr;
+
+    // adiciona o state ao elemento
+    node.state = state;
+
+    // função para atualizar o stado
+    node.updateState = (value) => state.value = value;
+
+    // função para atualizar o elemento
+    node.updateNode = (value) => node[attr] = value;
+
+    // adicina o elemento ao estado
+    state.bind(node);
+  }
 
   // percorre a lista de elementos
   for (const node of Array.from(list)) {
@@ -79,4 +79,4 @@ function initBind(parentNode, data) {
   }
 }
 
-export { createState, initBind }
+// export { createState, initBind }
