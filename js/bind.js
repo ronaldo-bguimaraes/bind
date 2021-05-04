@@ -79,4 +79,4 @@ function initBind(parentNode, data) {
   }
 }
 
-// export { createState, initBind }
+export { createState, initBind }

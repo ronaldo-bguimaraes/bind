@@ -1,3 +1,5 @@
+import { createState, initBind } from "./bind.js";
+
 const data = {};
 
 data.name = createState("ronaldo");
@@ -8,7 +10,7 @@ data.hora = createState("");
 
 initBind(document.body, data);
 
-setInterval(function() {
+setInterval(function () {
 
   const date = new Date();
 

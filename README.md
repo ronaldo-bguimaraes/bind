@@ -4,6 +4,8 @@
 
 JavaScript
 ```
+import { createState, initBind } from "./bind.js";
+
 const data = {};
 
 data.name = createState("Fulano de Tal");
