@@ -17,8 +17,11 @@ a {
   text-decoration: none;
 }
 
-[tag="btn"] {
-
-  border: 0px;
-  padding: 5px 10px;
+.root {
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
