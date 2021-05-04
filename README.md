@@ -98,4 +98,4 @@ setInterval(() => data.hora.value = getTimeBold(), 1000);
 initBind(document.body, data);
 ```
 
-[Bind Demo](https://ronaldobg.github.io/bind/)
+[Link para demonstração de implementação do Bind](https://ronaldobg.github.io/bind/)
