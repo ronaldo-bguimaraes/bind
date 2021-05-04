@@ -1,21 +1,23 @@
 import { createState, initBind } from "./bind.js";
 
+
 const data = {};
 
 data.name = createState("ronaldo");
 
-data.idade = createState("19");
+data.count = createState(0);
 
-data.hora = createState("");
-
-initBind(document.body, data);
-
-setInterval(function () {
+function getTimeBold() {
 
   const date = new Date();
 
-  data.hora.value = date.toLocaleTimeString().bold();
+  return date.toLocaleTimeString().bold();
+}
 
-})
+data.hora = createState(getTimeBold());
+
+setInterval(() => data.hora.value = getTimeBold(), 1000);
+
+initBind(document.body, data);
 
 window.data = data;
