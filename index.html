@@ -7,14 +7,14 @@
   <link type="text/css" rel="stylesheet" href="./css/index.css">
   <link rel="shortcut icon" href="#">
 
-  <title>Drax</title>
+  <title>Bind</title>
 </head>
 
 <body>
   <div id="root">
     <input type="text" oninput="updateState(this[attr])" value="ronaldo" bind="value:name">
     <span>
-      Meu nome é <span bind="textContent:name"></span>
+      Meu nome é: <span bind="textContent:name"></span>
     </span>
   </div>
   <script type="module" src="./js/index.js"></script>
