@@ -44,13 +44,13 @@ Exemplo de `attr`:
 
 Em `<span bind="textContent:name"></span>` o `attr` será `textContent`  
 
-### Exemplo 2 - Contador de cliques
+### Exemplo 2 - Contador de Cliques
 
 HTML:
 ```
 <body>
   <span>
-    Conta cliques: <span bind="textContent:count"></span>
+    Conta Cliques: <span bind="textContent:count"></span>
   </span>
   <button type="text" onclick="updateState(this[attr] + 1)" bind=":count">Clique aqui!</button>
 </body>
