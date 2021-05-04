@@ -52,7 +52,7 @@ HTML:
   <span>
     Conta cliques: <span bind="textContent:count"></span>
   </span>
-  <button type="text" onclick="updateState(this[attr] + 1)" bind="_:count">Clique aqui!</button>
+  <button type="text" onclick="updateState(this[attr] + 1)" bind=":count">Clique aqui!</button>
 </body>
 ```
 
