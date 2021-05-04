@@ -1,9 +1,8 @@
 import { createState, initBind } from "./bind.js";
 
-
 const data = {};
 
-data.name = createState("ronaldo");
+data.name = createState("Fulano de Tal");
 
 data.count = createState(0);
 
@@ -19,5 +18,3 @@ data.hora = createState(getTimeBold());
 setInterval(() => data.hora.value = getTimeBold(), 1000);
 
 initBind(document.body, data);
-
-window.data = data;

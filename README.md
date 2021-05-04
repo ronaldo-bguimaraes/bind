@@ -29,20 +29,20 @@ O padrão utilizado no HTML é:
 `bind="nomeDoAtributo:nomeDoState"`
 
 `attr` é um atribubo criado pela `initBind` function.
-Ele é anexado a cada elemento que tenha o atributo `bind`, e contém o nome que vem antes do `:`.
-(nome do atributo a ser modificado)
+Ele é anexado a cada elemento que tenha o atributo `bind`, e contém o nome que vem antes do `:`.  
+(nome do atributo a ser modificado)  
 
-Para atualiza o `state` basta criar um evento no elemento, que seja de sua preferência.
+Para atualiza o `state` basta criar um evento no elemento, que seja de sua preferência.  
 
-Exemplos de implementação:
+Exemplos de implementação:  
 
-1° (Recomendada): `oninput="updateState(this[attr])`
-2°: `onkeyup="updateState(this[attr])`
-2°: `onchange="updateState(this[attr])`
+1° (Recomendada): `oninput="updateState(this[attr])`  
+2°: `onkeyup="updateState(this[attr])`  
+2°: `onchange="updateState(this[attr])`  
 
-Exemplo de `attr`:
+Exemplo de `attr`:  
 
-Em `<span bind="textContent:name"></span>` o `attr` será `textContent`
+Em `<span bind="textContent:name"></span>` o `attr` será `textContent`  
 
 ### Exemplo 2 - Contador de cliques
 
