@@ -2,7 +2,7 @@
 
 ## Como usar
 
-### Exemplo 1 - Mostrando Dados de um `input`
+### Exemplo 1 - Mostrando dados de um `input`
 
 HTML:
 ```
