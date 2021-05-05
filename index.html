@@ -26,6 +26,17 @@
     <span>
       Horário: <span bind="innerHTML:hora"></span>
     </span>
+    <b>Exemplo 4 - Controle de Número</b>
+    <span>
+      Número: <span bind="textContent:number"></span>
+    </span>
+    <span>
+      <progress max="10" bind="value:number"></progress>
+    </span>
+    <div>
+      <button type="text" onclick="updateState( this[attr] - 1)" bind=":number">-</button>
+      <button type="text" onclick="updateState(this[attr] + 1)" bind=":number">+</button>
+    </div>
   </div>
 
   <script type="module" src="./js/index.js"></script>

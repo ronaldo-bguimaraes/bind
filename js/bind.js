@@ -56,13 +56,20 @@ function initBind(parentNode, data) {
     node.state = state;
 
     // função para atualizar o stado
-    node.updateState = (value) => state.value = value;
+    node.updateState = function (value) {
+      state.value = value;
+    }
 
     // função para atualizar o elemento
-    node.updateNode = (value) => node[attr] = value;
+    node.updateNode = function (value) {
+      this[attr] = value;
+    }
 
     // adicina o elemento ao estado
     state.bind(node);
+
+    // executa a primeira iteração
+    node.updateState(node.state.value);
   }
 
   // percorre a lista de elementos
@@ -73,9 +80,6 @@ function initBind(parentNode, data) {
 
     // cria a ligação com o elemento e o estado
     bindNode(node, attr, data[name]);
-
-    // executa a primeira iteração
-    node.updateState(node.state.value);
   }
 }
 
