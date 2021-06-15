@@ -1,24 +1,13 @@
-import { createState, initBind } from "./bind.js";
-
-const data = {};
-
-data.name = createState("Fulano de Tal");
-
-data.count = createState(0);
-
-data.number = createState(0);
-
+import { State } from "./bind.js";
+const obj = {};
+obj.name = new State("Fulano de Tal");
+obj.count = new State(0);
+obj.number = new State(0);
 function getTimeBold() {
-
-  const date = new Date();
-
-  return date.toLocaleTimeString().bold();
+    const date = new Date();
+    return date.toLocaleTimeString().bold();
 }
-
-data.hora = createState(getTimeBold());
-
-setInterval(() => data.hora.value = getTimeBold(), 1000);
-
-initBind(document.body, data);
-
-window.data = data;
+obj.hora = new State(getTimeBold());
+setInterval(() => obj.hora.value = getTimeBold(), 500);
+State.startBind(obj, document.body);
+window["obj"] = obj;

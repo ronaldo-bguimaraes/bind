@@ -14,28 +14,29 @@
   <div id="root" class="root">
     <b>Exemplo 1 - Mostrando dados de um input</b>
     <span>
-      Meu nome é: <span bind="textContent:name"></span>
+      Meu nome é: <span data-bind="name:textContent"></span>
+      Meu nome é: <span data-bind="name:textContent"></span>
     </span>
-    <input type="text" oninput="updateState(this[attr])" bind="value:name">
+    <input type="text" oninput="updateState(this[$attr])" data-bind="name:value">
     <b>Exemplo 2 - Contador de Cliques</b>
     <span>
-      Conta Cliques: <span bind="textContent:count"></span>
+      Conta Cliques: <span data-bind="count:textContent"></span>
     </span>
-    <button type="text" onclick="updateState(this[attr] + 1)" bind=":count">Clique aqui!</button>
+    <button type="text" onclick="updateState(this[$attr] + 1)" data-bind="count:">Clique aqui!</button>
     <b>Exemplo 3 - Mostrando o Horário</b>
     <span>
-      Horário: <span bind="innerHTML:hora"></span>
+      Horário: <span data-bind="hora:innerHTML"></span>
     </span>
     <b>Exemplo 4 - Controle de Número</b>
     <span>
-      Número: <span bind="textContent:number"></span>
+      Número: <span data-bind="number:textContent"></span>
     </span>
     <span>
-      <progress max="10" bind="value:number"></progress>
+      <progress max="10" data-bind="number:value"></progress>
     </span>
     <div>
-      <button type="text" onclick="updateState( this[attr] - 1)" bind=":number">-</button>
-      <button type="text" onclick="updateState(this[attr] + 1)" bind=":number">+</button>
+      <button type="text" onclick="updateState(this[$attr] - 1)" data-bind="number:">-</button>
+      <button type="text" onclick="updateState(this[$attr] + 1)" data-bind="number:">+</button>
     </div>
   </div>
 
