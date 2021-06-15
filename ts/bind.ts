@@ -16,6 +16,8 @@ interface IBindElement extends HTMLElement {
 
   updateNode(value: any): void;
 
+  [key: string]: any;
+
 }
 
 class State {

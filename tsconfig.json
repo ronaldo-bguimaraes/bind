@@ -2,11 +2,9 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    // "strict": true,
-    // "esModuleInterop": true,
-    // "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    // "watch": true,
-    "outDir": "./js"
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "./js",
   }
 }

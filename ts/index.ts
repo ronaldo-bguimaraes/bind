@@ -22,4 +22,10 @@ setInterval(() => obj.hora.value = getTimeBold(), 500);
 
 State.startBind(obj, document.body);
 
-window["obj"] = obj;
+interface Window {
+
+  [key: string]: any;
+
+}
+
+(<Window>window).obj = obj;
