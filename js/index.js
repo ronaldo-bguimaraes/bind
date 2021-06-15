@@ -9,4 +9,4 @@ function getTimeBold() {
 }
 obj.hora = new State(getTimeBold());
 setInterval(() => obj.hora.value = getTimeBold(), 500);
-State.startBind(obj, document.body);
+State.bindChildren(obj, document.body);
