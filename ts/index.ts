@@ -1,22 +1,25 @@
-import { State, IObjectState } from "./bind.js";
+import { DataState, IStateMap, State } from "./state.js";
 
-const obj: IObjectState = {};
+const stateMap: IStateMap = {
 
-obj.name = new State("Fulano de Tal");
+  name: new State("Ronaldo"),
 
-obj.count = new State(0);
+  count: new State(0),
 
-obj.number = new State(0);
+  number: new State(0),
+
+  hora: new State(getTimeBold())
+
+}
 
 function getTimeBold() {
 
   const date = new Date();
 
   return date.toLocaleTimeString().bold();
+
 }
 
-obj.hora = new State(getTimeBold());
+setInterval(() => stateMap.hora.value = getTimeBold(), 500);
 
-setInterval(() => obj.hora.value = getTimeBold(), 500);
-
-State.bindChildren(obj, document.body);
+DataState.bind(stateMap, document.body);

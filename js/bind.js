@@ -1,52 +1,20 @@
-class State {
-    constructor(valueDefault) {
-        this.$value = undefined;
-        this.$nodeList = new Set([]);
-        // inicialize value
-        this.value = valueDefault;
+class Bind {
+    _state;
+    _node;
+    _parentElement;
+    constructor(state, node, parentElement) {
+        this._state = state;
+        this._node = node;
+        this._parentElement = parentElement;
     }
-    get value() {
-        return this.$value;
+    get parentElement() {
+        return this._parentElement;
     }
-    set value(value) {
-        this.$value = value;
-        // atualiza os elementos com o novo valor
-        this.$nodeList.forEach(node => node.updateNode(value));
-    }
-    static bind(objectState, node) {
-        const bind = node.dataset.bind;
-        if (bind !== undefined) {
-            const split = bind.split(":");
-            if (split.length === 2) {
-                // atribui os values
-                [node.$name, node.$attr] = split;
-                node.$state = objectState[node.$name];
-                if (node.$state) {
-                    // função para atualizar o stado
-                    node.updateState = function (value) {
-                        node.$state.value = value;
-                    };
-                    // função para atualizar o elemento
-                    node.updateNode = function (value) {
-                        node[node.$attr] = value;
-                    };
-                    // adicina o elemento ao $state
-                    node.$state.$nodeList.add(node);
-                    // executa a primeira iteração
-                    node.updateState(node.$state.value);
-                }
-                else
-                    throw `State '${node.$name}' não encontrado...`;
-            }
-            else
-                throw `Formato incorreto em '${bind}'...`;
-        }
-    }
-    static bindChildren(objectState, parentNode) {
-        const nodeList = parentNode.querySelectorAll("[data-bind]");
-        for (const node of nodeList) {
-            State.bind(objectState, node);
+    updateNode() {
+        const show = this._node.getAttribute("bind-to");
+        if (show !== null) {
+            this._node[show] = this._state.value;
         }
     }
 }
-export { State };
+export { Bind };

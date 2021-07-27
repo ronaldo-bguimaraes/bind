@@ -1,103 +1,49 @@
-interface IObjectState {
+import { State } from "./state.js";
 
-  [key: string]: State
+interface IBindElement extends Element {
 
-}
+  state: State;
 
-interface IBindElement extends HTMLElement {
-
-  $name: string;
-
-  $attr: string;
-
-  $state: State;
-
-  updateState(value: any): void;
-
-  updateNode(value: any): void;
-
-  [key: string]: any;
+  [index: string]: any;
 
 }
 
-class State {
+class Bind {
 
-  private $value: any = undefined;
+  private _state: State;
 
-  private $nodeList: Set<IBindElement> = new Set([]);
+  private _node: IBindElement;
 
-  public constructor(valueDefault: any) {
+  private _parentElement: Element;
 
-    // inicialize value
-    this.value = valueDefault;
+  public constructor(state: State, node: IBindElement, parentElement: Element) {
+
+    this._state = state;
+
+    this._node = node;
+
+    this._parentElement = parentElement;
 
   }
 
-  public get value() {
+  public get parentElement() {
 
-    return this.$value;
+    return this._parentElement;
+
   }
 
-  public set value(value) {
+  public updateNode() {
 
-    this.$value = value;
+    const show = this._node.getAttribute("bind-to");
 
-    // atualiza os elementos com o novo valor
-    this.$nodeList.forEach(node => node.updateNode(value));
-  }
+    if (show !== null) {
 
-  public static bind(objectState: IObjectState, node: IBindElement) {
+      this._node[show] = this._state.value;
 
-    const bind = node.dataset.bind;
-
-    if (bind !== undefined) {
-
-      const split = bind.split(":");
-
-      if (split.length === 2) {
-
-        // atribui os values
-        [node.$name, node.$attr] = split;
-
-        node.$state = objectState[node.$name];
-
-        if (node.$state) {
-
-          // função para atualizar o stado
-          node.updateState = function (value) {
-            node.$state.value = value;
-          }
-
-          // função para atualizar o elemento
-          node.updateNode = function (value) {
-            node[node.$attr] = value;
-          }
-
-          // adicina o elemento ao $state
-          node.$state.$nodeList.add(node);
-
-          // executa a primeira iteração
-          node.updateState(node.$state.value);
-        }
-
-        else throw `State '${node.$name}' não encontrado...`;
-      }
-
-      else throw `Formato incorreto em '${bind}'...`;
     }
 
   }
 
-  public static bindChildren(objectState: IObjectState, parentNode: HTMLElement) {
-
-    const nodeList: NodeListOf<IBindElement> = parentNode.querySelectorAll("[data-bind]");
-
-    for (const node of nodeList) {
-
-      State.bind(objectState, node);
-
-    }
-  }
 }
 
-export { State, IObjectState };
+export { IBindElement, Bind };
